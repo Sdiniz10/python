@@ -1,0 +1,17 @@
+body {
+    background-image: url("../assets/final-fantasy-final-fantasy-vii-remake-tifa-lockhart-devushk.jpg");
+}
+
+.menu {
+    text-align: center;
+    height: 100%;
+    color: white;
+    background-color: rgba(108, 40, 145, 0.7);
+    backdrop-filter: blur;
+    text-decoration: none;
+}
+
+.home_text {
+    color: white;
+    text-decoration: none;
+}
