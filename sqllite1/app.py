@@ -38,10 +38,9 @@ with app.app_context():
 # --- READ — listar ---
 @app.route("/")
 def index():
-    contador = 0
+ 
     alunos = Aluno.query.order_by((Aluno.id).desc()).all()
-    for i in alunos:
-        contador = contador + 1
+ 
     return render_template("lista.html", alunos=alunos)
     
 

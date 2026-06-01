@@ -9,8 +9,7 @@
 
     <h1>Cadastro de Alunos</h1>
     <p class="subtitulo">AulaSQLalchemy — Flask + SQLAlchemy (sem MVC)</p>
-
-    <p  class="subtitulo">quantidade de alunos cadastrados:  </p>
+    <p  class="subtitulo">quantidade de alunos cadastrados: {{ alunos|length}}  </p>
 
     <p>
         <a class="btn" href="{{ url_for('cadastrar') }}">+ Novo aluno</a>
