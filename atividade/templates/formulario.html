@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>{{ titulo }}</h1>
+
+    {% if erro %}
+    <p class="erro">{{ erro }}</p>
+    {% endif %}
+
+    <form method="POST"
+          action="{% if produto_id %}{{ url_for('editar', produto_id=produto_id) }}{% else %}{{ url_for('cadastrar') }}{% endif %}">
+        <div class="form-grupo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required value="{{ nome or '' }}">
+        </div>
+        <div class="form-grupo">
+            <label for="categoria">categoria</label>
+            <input type="text" id="categoria" name="categoria" required value="{{ categoria or '' }}">
+        </div>
+        <div class="form-grupo">
+            <label for="preco">preco</label>
+            <input type="text" id="preco" name="preco" required value="{{ preco or '' }}">
+        </div>
+        <div class="form-grupo">
+            <label for="estoque">Estoque</label>
+            <input type="text" id="estoque" name="estoque" required value="{{ estoque or '' }}">
+        </div>
+        
+        <button type="submit">Salvar</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">← Voltar à lista</a></p>
+
+</body>
+</html>
