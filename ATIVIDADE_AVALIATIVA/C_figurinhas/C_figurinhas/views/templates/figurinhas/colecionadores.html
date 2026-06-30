@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Colecionadores{% endblock %}
+
+{% block content %}
+<h1>Colecionadores</h1>
+<p><a class="btn" href="{{ url_for('figurinhas.cadastrar_colecionador') }}">+ Novo colecionador</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Apelido</th>
+            <th>Cidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if colecionadores %}
+        {% for c in colecionadores %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.apelido }}</td>
+            <td>{{ c.cidade }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr><td colspan="3" class="vazio">Nenhum colecionador cadastrado.</td></tr>
+        {% endif %}
+    </tbody>
+</table>
+
+<p><a href="{{ url_for('figurinhas.index') }}">← Voltar</a></p>
+{% endblock %}

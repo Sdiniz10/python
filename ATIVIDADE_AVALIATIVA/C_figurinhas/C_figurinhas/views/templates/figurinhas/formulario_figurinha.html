@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Nova Figurinha{% endblock %}
+
+{% block content %}
+<h1>Nova Figurinha</h1>
+
+<form method="POST" action="{{ url_for('figurinhas.cadastrar_figurinha') }}">
+    <div class="form-grupo">
+        <label>Número</label>
+        <input type="number" name="numero" min="1" required>
+    </div>
+    <div class="form-grupo">
+        <label>Nome do jogador</label>
+        <input type="text" name="nome_jogador" required>
+    </div>
+    <div class="form-grupo">
+        <label>Time</label>
+        <input type="text" name="time" required>
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+
+<p><a href="{{ url_for('figurinhas.listar_figurinhas') }}">← Voltar</a></p>
+{% endblock %}
