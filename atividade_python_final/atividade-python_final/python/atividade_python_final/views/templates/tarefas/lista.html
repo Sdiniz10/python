@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Tarefas{% endblock %}
+
+{% block content %}
+<h1>Minhas Tarefas</h1>
+
+<div class="barra-filtro">
+    <label for="filtro-status">Filtrar por status</label>
+    <select id="filtro-status">
+        <option value="todas">Todas</option>
+        <option value="pendente">Pendente</option>
+        <option value="em andamento">Em andamento</option>
+        <option value="concluida">Concluída</option>
+    </select>
+    <a class="btn" href="{{ url_for('tarefa.nova_tarefa') }}">+ Nova tarefa</a>
+</div>
+
+{% if tarefas %}
+<table id="tabela-tarefas">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Usuário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tarefa in tarefas %}
+        <tr data-status="{{ tarefa.status|lower }}">
+            <td>{{ tarefa.titulo }}</td>
+            <td>{{ tarefa.descricao }}</td>
+            <td>
+                <span class="etiqueta etiqueta-{{ tarefa.status|lower|replace(' ', '-') }}">
+                    {{ tarefa.status }}
+                </span>
+            </td>
+            <td>{{ tarefa.usuario.nome if tarefa.usuario else '—' }}</td>
+            <td class="acoes">
+                <a href="/tarefa/editar/{{ tarefa.id }}">Editar</a>
+                <a class="perigo" href="/tarefa/excluir/{{ tarefa.id }}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p class="vazio" id="sem-resultado" hidden>Nenhuma tarefa com esse status.</p>
+{% else %}
+<p class="vazio">Nenhuma tarefa cadastrada.</p>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='style/filtros.js') }}"></script>
+{% endblock %}

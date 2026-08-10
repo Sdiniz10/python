@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Painel de Controle — Tarefas{% endblock %}
+
+{% block content %}
+<h1>Painel de Controle de Tarefas</h1>
+<p class="subtitulo">Flask + SQLite + API externa + Chart.js</p>
+
+<div class="cards">
+    <div class="card">
+        <span class="card-num">{{ total_usuarios }}</span>
+        <span class="card-label">Usuários</span>
+    </div>
+    <div class="card">
+        <span class="card-num">{{ total_tarefas }}</span>
+        <span class="card-label">Tarefas</span>
+    </div>
+</div>
+
+<section class="frase">
+    <h2>Frase do dia</h2>
+    <blockquote id="frase-dia">{{ frase|default('Carregando frase motivacional...') }}</blockquote>
+</section>
+
+<section class="grafico-box">
+    <h2>Progresso das tarefas</h2>
+    <canvas id="grafico-status" height="120"></canvas>
+    <p class="vazio" id="grafico-vazio" hidden>Sem dados para exibir.</p>
+</section>
+
+<p><a class="btn" href="{{ url_for('tarefa.index') }}">Ver todas as tarefas</a></p>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="{{ url_for('static', filename='js/graficos.js') }}"></script>
+{% endblock %}
