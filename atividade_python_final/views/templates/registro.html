@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Criar conta{% endblock %}
+
+{% block content %}
+<div class="caixa-auth">
+    <h1>Criar conta</h1>
+    <form class="formulario" method="POST" action="/registro">
+        <div class="form-grupo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" maxlength="60" required>
+        </div>
+        <div class="form-grupo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" maxlength="200" required>
+        </div>
+        <div class="form-grupo">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" minlength="6" required>
+        </div>
+        <button type="submit">Registrar</button>
+    </form>
+    <p class="auth-link">Já tem conta? <a href="/login">Entrar</a></p>
+</div>
+{% endblock %}
